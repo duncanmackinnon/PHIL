@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>PHIL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     /* ===== THEME ===== */
-    :root{
+    :root {
       --bg: #0b1020;
-      --bg-card: rgba(255,255,255,0.06);
-      --border: rgba(255,255,255,0.14);
+      --bg-card: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.14);
       --text: #e8ecf2;
       --muted: #a7b0be;
-      --accent: #7dd3fc;    /* cyan */
-      --accent-2: #c084fc;  /* violet */
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --accent: #7dd3fc;
+      /* cyan */
+      --accent-2: #c084fc;
+      /* violet */
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
       --radius: 16px;
-      --ring: 0 0 0 3px rgba(125,211,252,.35);
-      --grad: radial-gradient(1200px 600px at -10% 0%, rgba(124,58,237,.25) 0%, transparent 60%),
-              radial-gradient(1200px 600px at 110% 10%, rgba(14,165,233,.25) 0%, transparent 60%),
-              linear-gradient(180deg, #0b1020 0%, #0a0f1a 70%);
+      --ring: 0 0 0 3px rgba(125, 211, 252, .35);
+      --grad: radial-gradient(1200px 600px at -10% 0%, rgba(124, 58, 237, .25) 0%, transparent 60%),
+        radial-gradient(1200px 600px at 110% 10%, rgba(14, 165, 233, .25) 0%, transparent 60%),
+        linear-gradient(180deg, #0b1020 0%, #0a0f1a 70%);
     }
-    @media (prefers-color-scheme: light){
-      :root{
+
+    @media (prefers-color-scheme: light) {
+      :root {
         --bg: #f7fafc;
         --bg-card: #ffffffcc;
         --border: #e5e7eb;
@@ -30,34 +34,70 @@
         --muted: #556070;
         --accent: #0ea5e9;
         --accent-2: #8b5cf6;
-        --shadow: 0 8px 24px rgba(2,6,23,.08);
-        --grad: radial-gradient(1000px 500px at -10% -10%, rgba(14,165,233,.18) 0%, transparent 60%),
-                radial-gradient(1000px 500px at 110% 10%, rgba(139,92,246,.18) 0%, transparent 60%),
-                linear-gradient(180deg, #f7fafc 0%, #ffffff 70%);
+        --shadow: 0 8px 24px rgba(2, 6, 23, .08);
+        --grad: radial-gradient(1000px 500px at -10% -10%, rgba(14, 165, 233, .18) 0%, transparent 60%),
+          radial-gradient(1000px 500px at 110% 10%, rgba(139, 92, 246, .18) 0%, transparent 60%),
+          linear-gradient(180deg, #f7fafc 0%, #ffffff 70%);
       }
     }
 
     /* ===== BASE ===== */
-    html, body { height: 100%; }
-    body{
-      margin:0;
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
       color: var(--text);
       background: var(--grad);
       font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
-    .wrap{ max-width: 980px; margin: 0 auto; padding: 32px 20px 52px; }
-    .header{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom: 10px;
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 20px 52px;
     }
-    h1{ font-size: clamp(34px, 5vw, 56px); margin: 0; letter-spacing: -0.02em; }
-    h2{ font-size: clamp(20px, 3.1vw, 28px); margin: 0 0 12px; display:flex; align-items:center; gap:10px;}
-    h3{ font-size: clamp(16px, 2.2vw, 18px); margin: 0 0 10px; color: var(--muted); letter-spacing:.2px; }
+
+    .header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 56px);
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: clamp(20px, 3.1vw, 28px);
+      margin: 0 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h3 {
+      font-size: clamp(16px, 2.2vw, 18px);
+      margin: 0 0 10px;
+      color: var(--muted);
+      letter-spacing: .2px;
+    }
 
     /* ===== CARDS ===== */
-    .section{ margin-top: 28px; position: relative; }
-    .card{
+    .section {
+      margin-top: 28px;
+      position: relative;
+    }
+
+    .card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -67,56 +107,141 @@
       -webkit-backdrop-filter: blur(8px);
       transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     }
-    .card:hover{ transform: translateY(-2px); box-shadow: 0 14px 36px rgba(0,0,0,.35); border-color: rgba(255,255,255,0.22); }
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 6px 10px; border-radius: 999px; font-weight: 600; font-size: 12px; letter-spacing:.3px;
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, .35);
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: .3px;
       background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      color: #0b1020; mix-blend: normal;
-      box-shadow: 0 8px 16px rgba(125,211,252,.25), inset 0 0 0 1px rgba(255,255,255,.3);
+      color: #0b1020;
+      mix-blend: normal;
+      box-shadow: 0 8px 16px rgba(125, 211, 252, .25), inset 0 0 0 1px rgba(255, 255, 255, .3);
     }
 
     /* ===== LAYOUT ===== */
-    .grid-assign{ display: grid; grid-template-columns: 1fr; gap: 16px; }
-    .members{ list-style: none; padding: 0; margin: 0; display:grid; grid-template-columns: 1fr; gap: 10px; }
-    .member{ border:1px dashed var(--border); border-radius: 12px; padding: 10px 12px; }
-    .assign ul{ margin: 8px 0 0; padding-left: 1.2rem; }
-    .muted{ color: var(--muted); }
+    .grid-assign {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
 
-    @media (min-width: 760px){
-      .grid-assign{ grid-template-columns: repeat(3, 1fr); }
-      .members{ grid-template-columns: repeat(2, 1fr); }
+    .members {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .member {
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+
+    .assign ul {
+      margin: 8px 0 0;
+      padding-left: 1.2rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    @media (min-width: 760px) {
+      .grid-assign {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .members {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     /* ===== LINKS & FOCUS ===== */
-    a{ color: var(--accent); text-decoration:none; }
-    a:hover{ text-decoration: underline; }
-    :focus-visible{ outline: none; box-shadow: var(--ring); border-radius: 10px; }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    :focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+      border-radius: 10px;
+    }
 
     /* ===== ICONS ===== */
-    .icon{
-      width: 22px; height: 22px; flex: none;
+    .icon {
+      width: 22px;
+      height: 22px;
+      flex: none;
       background: linear-gradient(120deg, var(--accent), var(--accent-2));
       -webkit-mask: var(--mask) center / contain no-repeat;
-              mask: var(--mask) center / contain no-repeat;
+      mask: var(--mask) center / contain no-repeat;
     }
-    .icon-book { --mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M6 4h11a1 1 0 0 1 1 1v13.5a.5.5 0 0 1-.8.4 4.5 4.5 0 0 0-3.2-.9H6a2 2 0 0 0-2 2V6a2 2 0 0 1 2-2zM6 17h8a6.5 6.5 0 0 1 3 0V6H6v11z"/></svg>'); }
-    .icon-users{ --mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M7 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm9-2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zM2 19a5 5 0 0 1 10 0v1H2v-1zm10 1v-1a5 5 0 0 1 7-4.58A5.98 5.98 0 0 1 22 20v1h-10z"/></svg>'); }
-    .icon-tasks{ --mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M9 3h6a2 2 0 0 1 2 2v1h-2V5H9v1H7V5a2 2 0 0 1 2-2zM5 20a2 2 0 0 1-2-2V8h18v10a2 2 0 0 1-2 2H5zM8.3 12.7l1.4 1.4 3-3-1.4-1.4-1.6 1.6-.4-.4-1.4 1.4z"/></svg>'); }
-    .icon-mail { --mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M4 6h16a2 2 0 0 1 2 2v.2l-10 6-10-6V8a2 2 0 0 1 2-2zm16 12H4a2 2 0 0 1-2-2V9.3l9.4 5.6a1.5 1.5 0 0 0 1.2 0L22 9.3V16a2 2 0 0 1-2 2z"/></svg>'); }
+
+    .icon-book {
+      --mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M6 4h11a1 1 0 0 1 1 1v13.5a.5.5 0 0 1-.8.4 4.5 4.5 0 0 0-3.2-.9H6a2 2 0 0 0-2 2V6a2 2 0 0 1 2-2zM6 17h8a6.5 6.5 0 0 1 3 0V6H6v11z"/></svg>');
+    }
+
+    .icon-users {
+      --mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M7 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm9-2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zM2 19a5 5 0 0 1 10 0v1H2v-1zm10 1v-1a5 5 0 0 1 7-4.58A5.98 5.98 0 0 1 22 20v1h-10z"/></svg>');
+    }
+
+    .icon-tasks {
+      --mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M9 3h6a2 2 0 0 1 2 2v1h-2V5H9v1H7V5a2 2 0 0 1 2-2zM5 20a2 2 0 0 1-2-2V8h18v10a2 2 0 0 1-2 2H5zM8.3 12.7l1.4 1.4 3-3-1.4-1.4-1.6 1.6-.4-.4-1.4 1.4z"/></svg>');
+    }
+
+    .icon-mail {
+      --mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M4 6h16a2 2 0 0 1 2 2v.2l-10 6-10-6V8a2 2 0 0 1 2-2zm16 12H4a2 2 0 0 1-2-2V9.3l9.4 5.6a1.5 1.5 0 0 0 1.2 0L22 9.3V16a2 2 0 0 1-2 2z"/></svg>');
+    }
 
     /* ===== MOTION ===== */
-    @media (prefers-reduced-motion: no-preference){
-      .fade-in{ opacity: 0; transform: translateY(8px); animation: fade .6s ease forwards; }
-      .fade-in.d1{ animation-delay: .06s;}
-      .fade-in.d2{ animation-delay: .12s;}
-      .fade-in.d3{ animation-delay: .18s;}
-      @keyframes fade{
-        to{ opacity:1; transform:none; }
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in {
+        opacity: 0;
+        transform: translateY(8px);
+        animation: fade .6s ease forwards;
+      }
+
+      .fade-in.d1 {
+        animation-delay: .06s;
+      }
+
+      .fade-in.d2 {
+        animation-delay: .12s;
+      }
+
+      .fade-in.d3 {
+        animation-delay: .18s;
+      }
+
+      @keyframes fade {
+        to {
+          opacity: 1;
+          transform: none;
+        }
       }
     }
   </style>
 </head>
+
 <body>
   <main class="wrap" role="main">
     <header class="header fade-in">
@@ -128,7 +253,10 @@
     <section id="about" class="section fade-in d1">
       <h2><span class="icon icon-book" aria-hidden="true"></span>About Project</h2>
       <div class="card">
-        <p><strong>VOID</strong> is an AI‑assisted Integrated Development Environment (AI IDE). This project focuses on the software architecture: defining components and their interactions to enable model‑augmented coding (suggestions, refactoring, test generation) while meeting constraints around latency, reliability, and developer workflow.</p>
+        <p><strong>VOID</strong> is an AI‑assisted Integrated Development Environment (AI IDE). This project focuses on
+          the software architecture: defining components and their interactions to enable model‑augmented coding
+          (suggestions, refactoring, test generation) while meeting constraints around latency, reliability, and
+          developer workflow.</p>
       </div>
     </section>
 
@@ -155,10 +283,19 @@
         <div class="card assign">
           <h3>Assignment 2</h3>
           <ul>
-            <li>Concrete Architecture report: <em>coming soon</em></li>
-            <li>Concrete Architecture slides: <em>coming soon</em></li>
+            <li>
+              Concrete Architecture report:
+              <a href="assets/a2/a2-report-322.pdf" target="_blank" rel="noopener">View PDF</a>
+              · <a href="assets/a2/a2-report-322.pdf" download>Download</a>
+            </li>
+            <li>
+              Concrete Architecture slides:
+              <a href="assets/a2/a2-slides-322.pdf" target="_blank" rel="noopener">View PDF</a>
+              · <a href="assets/a2/a2-slides-322.pdf" download>Download</a>
+            </li>
           </ul>
         </div>
+
         <div class="card assign">
           <h3>Assignment 3</h3>
           <ul>
@@ -184,4 +321,5 @@
     </section>
   </main>
 </body>
+
 </html>
